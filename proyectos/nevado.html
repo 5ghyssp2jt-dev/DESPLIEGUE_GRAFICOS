@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reto: Día nevado soleado</title>
+    <link rel="stylesheet" href="../estilo.css">
+    <!-- Incluir p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Proyecto: Día nevado soleado</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Volver al Inicio</a></li>
+        </ul>
+    </nav>
+    <main style="text-align: center;">
+        <h2>Visualización en p5.js</h2>
+        <script>
+            function setup() {
+                createCanvas(400, 400);
+            }
+
+            function draw() {
+                // Código exacto de tu ejercicio de Khan Academy:
+                background(104, 210, 212);
+
+                fill(104, 242, 125);
+                // The ground
+                rect(0, 300, 400, 100);
+
+                fill(255, 242, 0);
+                // The sun
+                ellipse(80, 64, 100, 100);
+
+                fill(247, 247, 247);
+                // The snowman
+                ellipse(200, 300, 150, 150);
+                ellipse(200, 200, 100, 100);
+                ellipse(200, 120, 75, 75);
+            }
+        </script>
+    </main>
+</body>
+</html>

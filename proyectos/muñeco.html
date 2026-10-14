@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reto: Muñeco de nieve sencillo</title>
+    <link rel="stylesheet" href="../estilo.css">
+    <!-- Incluir p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Proyecto: Muñeco de nieve sencillo</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Volver al Inicio</a></li>
+        </ul>
+    </nav>
+    <main style="text-align: center;">
+        <h2>Visualización en p5.js</h2>
+        <script>
+            function setup() {
+                createCanvas(400, 400);
+                background(240, 248, 255); // Fondo claro para resaltar el muñeco
+            }
+
+            function draw() {
+                // Código exacto de tu desafío de Khan Academy:
+                ellipse(200, 300, 150, 150);
+                ellipse(200, 190, 110, 110);
+                ellipse(200, 105, 80, 80);
+            }
+        </script>
+    </main>
+</body>
+</html>

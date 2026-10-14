@@ -1,0 +1,95 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f5fa;
+    color: #3b3042;
+}
+
+header {
+    background: linear-gradient(135deg, #6a4c93, #8ac926); /* Degradado moderno */
+    background: #6c5ce7; /* Color lila/morado principal */
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+}
+
+header p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+nav {
+    background: #4834d4; /* Lila un poco más oscuro para la barra de navegación */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 18px;
+    display: block;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: #341f97; /* Tono más intenso al pasar el ratón */
+}
+
+main {
+    padding: 30px;
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    box-shadow: 0 10px 25px rgba(108, 92, 231, 0.15); /* Sombra suave con tinte lila */
+    border-radius: 12px;
+    border-top: 5px solid #6c5ce7;
+}
+
+h2 {
+    color: #4834d4;
+    border-bottom: 2px solid #dfe6e9;
+    padding-bottom: 8px;
+}
+
+h3, h4 {
+    color: #6c5ce7;
+}
+
+code {
+    background-color: #f1f2f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #e84393;
+    font-family: monospace;
+}
+
+canvas {
+    border: 2px solid #dcdde1;
+    background: #fff;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}

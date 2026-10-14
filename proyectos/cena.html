@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reto: ¿Qué hay de cena?</title>
+    <link rel="stylesheet" href="../estilo.css">
+    <!-- Incluir p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Proyecto: ¿Qué hay de cena?</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Volver al Inicio</a></li>
+        </ul>
+    </nav>
+    <main style="text-align: center;">
+        <h2>Visualización en p5.js</h2>
+        <script>
+            function setup() {
+                createCanvas(400, 400);
+            }
+
+            function draw() {
+                background(186, 145, 20); // wooden table[cite: 6]
+
+                fill(240, 240, 240);
+                stroke(180, 180, 180);
+                ellipse(200, 200, 350, 350); // plate[cite: 6]
+                ellipse(200, 200, 300, 300);
+
+                fill(150, 60, 40);
+                stroke(100, 30, 20);
+                ellipse(155, 190, 100, 65);
+
+                fill(255, 255, 255);
+                stroke(220, 220, 220);
+                ellipse(240, 170, 80, 60);
+
+                fill(255, 210, 0);
+                ellipse(240, 170, 30, 30);
+
+                fill(255, 220, 100);
+                rect(175, 235, 10, 40);
+                rect(190, 230, 10, 45);
+                rect(205, 240, 10, 35);
+            }
+        </script>
+    </main>
+</body>
+</html>

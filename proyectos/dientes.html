@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reto: Dientes de conejo</title>
+    <link rel="stylesheet" href="../estilo.css">
+    <!-- Incluir p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Proyecto: Dientes de conejo</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Volver al Inicio</a></li>
+        </ul>
+    </nav>
+    <main style="text-align: center;">
+        <h2>Visualización en p5.js</h2>
+        <script>
+            function setup() {
+                createCanvas(400, 400);
+                background(240, 248, 255);
+            }
+
+            function draw() {
+                var eyeSize = 15;
+                var toothLength = 15;
+                
+                ellipse(150, 70, 60, 120);   // left ear
+                ellipse(240, 70, 60, 120);   // right ear
+                
+                ellipse(200, 170, 150, 150); // face
+                
+                fill(0, 0, 0);
+                ellipse(170, 150, eyeSize, eyeSize);
+                ellipse(230, 150, eyeSize, eyeSize);
+                
+                line(150, 200, 250, 200);    // mouth
+                
+                noFill();
+                rect(185, 200, 15, toothLength);
+                rect(200, 200, 15, toothLength);
+            }
+        </script>
+    </main>
+</body>
+</html>

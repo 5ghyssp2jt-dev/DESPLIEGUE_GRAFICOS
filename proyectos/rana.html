@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reto: Rana loca</title>
+    <link rel="stylesheet" href="../estilo.css">
+    <!-- Incluir p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Proyecto: Rana loca</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Volver al Inicio</a></li>
+        </ul>
+    </nav>
+    <main style="text-align: center;">
+        <h2>Visualización en p5.js</h2>
+        <script>
+            function setup() {
+                createCanvas(400, 400);
+                background(240, 248, 255);
+            }
+
+            function draw() {
+                var x = 200;
+                var y = 250;
+
+                noStroke();
+                fill(30, 204, 91); // a nice froggy green![cite: 5]
+
+                ellipse(x, y, 200, 100);       // face[cite: 5]
+                ellipse(x - 50, y - 50, 40, 40); // left eye socket[cite: 5]
+                ellipse(x + 50, y - 50, 40, 40); // right eye socket[cite: 5]
+
+                fill(255, 255, 255);           // for the whites of the eyes![cite: 5]
+                ellipse(x - 50, y - 50, 30, 30); // left eyeball[cite: 5]
+                ellipse(x + 50, y - 50, 30, 30); // right eyeball[cite: 5]
+
+                // Boca de la rana (añadida según las instrucciones del reto)
+                fill(0, 0, 0);
+                ellipse(x, y, 100, 40);
+            }
+        </script>
+    </main>
+</body>
+</html>

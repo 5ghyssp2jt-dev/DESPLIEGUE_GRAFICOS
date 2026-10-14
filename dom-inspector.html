@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inspector del Árbol del DOM</title>
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        .dom-tree ul {
+            list-style-type: none;
+            position: relative;
+            padding-left: 20px;
+        }
+        .dom-tree li {
+            margin: 5px 0;
+            position: relative;
+        }
+        .tag {
+            background: #e1f5fe;
+            border: 1px solid #0288d1;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: bold;
+            color: #01579b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Inspector del Árbol del DOM</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="dom-inspector.html">Árbol del DOM</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Jerarquía del Sitio Web (Estructura DOM)</h2>
+        <p>A continuación se representa gráficamente la jerarquía de etiquetas de la página principal del proyecto:</p>
+        
+        <div class="dom-tree">
+            <ul>
+                <li><span class="tag">&lt;html lang="es"&gt;</span>
+                    <ul>
+                        <li><span class="tag">&lt;head&gt;</span>
+                            <ul>
+                                <li><span class="tag">&lt;meta charset="UTF-8"&gt;</span></li>
+                                <li><span class="tag">&lt;title&gt;</span></li>
+                                <li><span class="tag">&lt;link rel="stylesheet" href="estilo.css"&gt;</span></li>
+                            </ul>
+                        </li>
+                        <li><span class="tag">&lt;body&gt;</span>
+                            <ul>
+                                <li><span class="tag">&lt;header&gt;</span>
+                                    <ul>
+                                        <li><span class="tag">&lt;h1&gt;</span></li>
+                                        <li><span class="tag">&lt;p&gt;</span></li>
+                                    </ul>
+                                </li>
+                                <li><span class="tag">&lt;nav&gt;</span>
+                                    <ul>
+                                        <li><span class="tag">&lt;ul&gt;</span>
+                                            <ul>
+                                                <li><span class="tag">&lt;li&gt;</span> &rarr; <span class="tag">&lt;a&gt;</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><span class="tag">&lt;main&gt;</span>
+                                    <ul>
+                                        <li><span class="tag">&lt;h2&gt;</span></li>
+                                        <li><span class="tag">&lt;p&gt;</span></li>
+                                        <li><span class="tag">&lt;section&gt;</span>
+                                            <ul>
+                                                <li><span class="tag">&lt;h3&gt;</span></li>
+                                                <li><span class="tag">&lt;h4&gt;</span></li>
+                                                <li><span class="tag">&lt;p&gt;</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
