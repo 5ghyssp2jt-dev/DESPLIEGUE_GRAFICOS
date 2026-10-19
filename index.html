@@ -1,44 +1,737 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Despliegue de Gráficos - Inicio</title>
-    <link rel="stylesheet" href="estilo.css">
-</head>
-<body>
-    <header>
-        <h1>Despliegue de Gráficos con HTML5 y p5.js</h1>
-        <p>Conversión de retos de Khan Academy a entorno web nativo</p>
-        <!-- Aquí agregamos tu nombre -->
-        <p style="margin-top: 10px; font-weight: bold; font-size: 1.2rem; color: #f1f2f6;">
-            Elaborado por: Yadira Martinez Perez
-        </p>
-    </header>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Despliegue de Gráficos | Mundo Creativo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --lila: #a78bfa;
+            --lila-oscuro: #7952c7;
+            --rosa: #f5a3c7;
+            --rosa-claro: #ffe4f0;
+            --fondo: #fcf8ff;
+            --texto: #443653;
+            --blanco: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--fondo);
+            color: var(--texto);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVEGACIÓN */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 15px 7%;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 3px 18px #b99bd51c;
+        }
+
+        .logo {
+            color: var(--lila-oscuro);
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #e875ac;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .menu a {
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            background: var(--rosa-claro);
+            color: var(--lila-oscuro);
+        }
+
+        /* PORTADA */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 95px 20px 105px;
+            text-align: center;
+            background: linear-gradient(
+                135deg,
+                #e9ddff 0%,
+                #ffe1ef 55%,
+                #f7eaff 100%
+            );
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: #ffffff55;
+        }
+
+        .hero::before {
+            width: 240px;
+            height: 240px;
+            top: -90px;
+            left: -50px;
+        }
+
+        .hero::after {
+            width: 300px;
+            height: 300px;
+            bottom: -170px;
+            right: -40px;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            background: #ffffffa8;
+            color: var(--lila-oscuro);
+            border: 1px solid #ffffff;
+            padding: 7px 18px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+            margin: 0 auto 18px;
+            font-size: clamp(2.1rem, 5vw, 4rem);
+            line-height: 1.2;
+            font-weight: 800;
+            color: #60418f;
+        }
+
+        .hero h1 span {
+            color: #df6da7;
+        }
+
+        .hero p {
+            position: relative;
+            z-index: 1;
+            max-width: 680px;
+            margin: 0 auto 30px;
+            color: #665573;
+            font-size: 1rem;
+        }
+
+        .boton {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 30px;
+            color: white;
+            background: linear-gradient(135deg, #a78bfa, #e78ab8);
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 7px 20px #b68dd64d;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .boton:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px #b68dd666;
+        }
+
+        /* CONTENIDO GENERAL */
+
+        main {
+            width: min(1120px, 90%);
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 65px 0;
+            scroll-margin-top: 85px;
+        }
+
+        .encabezado {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .encabezado .mini {
+            color: #dc78aa;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.76rem;
+            font-weight: 700;
+        }
+
+        .encabezado h2 {
+            color: #67478e;
+            font-size: clamp(1.6rem, 3vw, 2.3rem);
+            line-height: 1.3;
+            margin: 8px 0 12px;
+        }
+
+        .encabezado p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #81738d;
+            font-size: 0.93rem;
+        }
+
+        /* TARJETAS DE GRÁFICOS */
+
+        .rejilla {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 23px;
+        }
+
+        .tarjeta {
+            background: white;
+            border: 1px solid #f0e5fa;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px #8e6ba510;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px #8e6ba522;
+        }
+
+        .ilustracion {
+            min-height: 155px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4.5rem;
+            background: linear-gradient(135deg, #f0e5ff, #ffe6f1);
+        }
+
+        .tarjeta:nth-child(2) .ilustracion {
+            background: linear-gradient(135deg, #e2e9ff, #f8e4ff);
+        }
+
+        .tarjeta:nth-child(3) .ilustracion {
+            background: linear-gradient(135deg, #e5e3ff, #ffe3f1);
+        }
+
+        .tarjeta-contenido {
+            padding: 23px;
+        }
+
+        .tarjeta h3 {
+            color: #684b91;
+            font-size: 1.08rem;
+            margin-bottom: 8px;
+        }
+
+        .tarjeta p {
+            color: #81758d;
+            font-size: 0.85rem;
+            min-height: 57px;
+        }
+
+        .enlace {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 9px 16px;
+            border-radius: 25px;
+            color: #8159b7;
+            background: #f0e7ff;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .enlace:hover {
+            color: white;
+            background: linear-gradient(135deg, #a78bfa, #e78ab8);
+        }
+
+        .secundarios {
+            margin-top: 24px;
+        }
+
+        /* SECCIONES INFORMATIVAS */
+
+        .info {
+            display: grid;
+            grid-template-columns: 75px 1fr;
+            align-items: start;
+            gap: 20px;
+            padding: 27px;
+            background: white;
+            border: 1px solid #f0e5fa;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px #8e6ba510;
+        }
+
+        .info + .info {
+            margin-top: 20px;
+        }
+
+        .info-icono {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #e9ddff, #ffe1ef);
+            font-size: 2rem;
+        }
+
+        .info h3 {
+            color: #684b91;
+            margin-bottom: 8px;
+            font-size: 1.15rem;
+        }
+
+        .info p,
+        .info li {
+            color: #786c85;
+            font-size: 0.9rem;
+        }
+
+        .info ul {
+            padding-left: 22px;
+            margin-top: 10px;
+        }
+
+        code {
+            padding: 2px 6px;
+            border-radius: 5px;
+            color: #8751ae;
+            background: #f4eaff;
+            overflow-wrap: anywhere;
+        }
+
+        /* DOM */
+
+        .dom-card {
+            padding: 35px;
+            border-radius: 24px;
+            text-align: center;
+            background: linear-gradient(135deg, #eee5ff, #ffe7f1);
+        }
+
+        .dom-card .dom-emoji {
+            font-size: 3rem;
+            margin-bottom: 8px;
+        }
+
+        .dom-card h2 {
+            color: #67478e;
+            margin-bottom: 10px;
+        }
+
+        .dom-card p {
+            max-width: 650px;
+            margin: 0 auto 22px;
+            color: #766482;
+            font-size: 0.9rem;
+        }
+
+        .dom-card .boton {
+            border: none;
+            cursor: pointer;
+        }
+
+        /* PIE DE PÁGINA */
+
+        footer {
+            margin-top: 30px;
+            padding: 35px 20px;
+            text-align: center;
+            background: #eee4fb;
+            color: #756187;
+        }
+
+        footer .footer-logo {
+            color: #7952a8;
+            font-weight: 800;
+            font-size: 1.15rem;
+            margin-bottom: 5px;
+        }
+
+        footer p {
+            font-size: 0.83rem;
+        }
+
+        footer .corazon {
+            color: #e875ac;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+            nav {
+                justify-content: center;
+            }
+
+            .rejilla {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .hero {
+                padding: 70px 18px 80px;
+            }
+
+            .rejilla {
+                grid-template-columns: 1fr;
+            }
+
+            .menu {
+                gap: 3px;
+            }
+
+            .menu a {
+                font-size: 0.77rem;
+                padding: 7px 9px;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+                padding: 22px;
+            }
+
+            .info-icono {
+                width: 58px;
+                height: 58px;
+                font-size: 1.7rem;
+            }
+
+            .dom-card {
+                padding: 25px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENÚ DE NAVEGACIÓN -->
     <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="proyectos/rana.html">Rana</a></li>
-            <li><a href="proyectos/dientes.html">Dientes de conejo</a></li>
-            <li><a href="proyectos/cena.html">¿Qué hay de cena?</a></li>
-            <li><a href="proyectos/nevado.html">Día nevado soleado</a></li>
-            <li><a href="proyectos/muneco.html">Muñeco de nieve</a></li>
-            <li><a href="dom-inspector.html">Árbol del DOM</a></li>
-        </ul>
+        <a class="logo" href="index.html">
+            ✿ Mundo <span>Creativo</span>
+        </a>
+
+        <div class="menu">
+            <a href="#inicio">Inicio</a>
+            <a href="#graficos">Gráficos</a>
+            <a href="#canvas">Canvas 2D</a>
+            <a href="#p5js">p5.js</a>
+            <a href="dom-inspector.html">Árbol DOM</a>
+        </div>
     </nav>
 
+    <!-- PORTADA -->
+    <header class="hero" id="inicio">
+        <span class="etiqueta">✦ PROYECTO ACADÉMICO ✦</span>
+
+        <h1>
+            Un mundo de <span>gráficos</span><br>
+            y animaciones
+        </h1>
+
+        <p>
+            Explora la creatividad a través del código.
+            Descubre dibujos, animaciones y proyectos creados
+            con HTML, CSS, JavaScript y p5.js.
+        </p>
+
+        <a class="boton" href="#graficos">
+            Explorar mis gráficos ✨
+        </a>
+    </header>
+
     <main>
-        <h2>Bienvenida al Portafolio</h2>
-        <p>Este sitio web reúne los dibujos y animaciones desarrollados originalmente en Khan Academy, ahora adaptados utilizando estándares web modernos con HTML, CSS y JavaScript.</p>
 
-        <section>
-            <h3>Fundamentos Teóricos</h3>
-            <h4>1. La etiqueta HTML <code>&lt;canvas&gt;</code> y sus contextos 2D</h4>
-            <p>La etiqueta <code>&lt;canvas&gt;</code> es un contenedor gráfico en HTML5 que permite dibujar gráficos sobre la marcha mediante secuencias de comandos (usualmente JavaScript). Para poder dibujar en él, se requiere obtener un <strong>contexto de renderizado</strong> utilizando el método <code>getContext('2d')</code>. Este contexto proporciona propiedades y funciones para trazar rutas, rectángulos, círculos, texto e imágenes.</p>
+        <!-- GALERÍA DE GRÁFICOS -->
+        <section id="graficos">
 
-            <h4>2. Fundamentos de la librería p5.js</h4>
-            <p><strong>p5.js</strong> es una biblioteca de JavaScript que facilita la programación creativa y visual inspirada en Processing. Simplifica la manipulación del elemento <code>&lt;canvas&gt;</code> ofreciendo funciones intuitivas como <code>setup()</code> (para la configuración inicial) y <code>draw()</code> (que actúa como un bucle continuo para animaciones), además de funciones geométricas predefinidas (<code>rect()</code>, <code>ellipse()</code>, <code>fill()</code>, etc.).</p>
+            <div class="encabezado">
+                <span class="mini">Mi colección</span>
+                <h2>Mis gráficos y dibujos ♡</h2>
+                <p>
+                    Cada dibujo es una pequeña creación hecha con
+                    programación. Selecciona uno para explorar el proyecto.
+                </p>
+            </div>
+
+            <div class="rejilla">
+
+                <article class="tarjeta">
+                    <div class="ilustracion" aria-hidden="true">☀️</div>
+                    <div class="tarjeta-contenido">
+                        <h3>El sol que explota</h3>
+                        <p>
+                            Una animación del sol con un efecto visual
+                            de explosión y movimiento.
+                        </p>
+                        <a class="enlace" href="sol-explota.html">
+                            Ver proyecto →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="ilustracion" aria-hidden="true">☁️</div>
+                    <div class="tarjeta-contenido">
+                        <h3>Nubes que se separan</h3>
+                        <p>
+                            Una escena animada donde las nubes se
+                            mueven y se separan.
+                        </p>
+                        <a class="enlace" href="nubes-separan.html">
+                            Ver proyecto →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="ilustracion" aria-hidden="true">🌠</div>
+                    <div class="tarjeta-contenido">
+                        <h3>Estrella fugaz</h3>
+                        <p>
+                            Una estrella atraviesa el cielo en una
+                            animación inspirada en la noche.
+                        </p>
+                        <a class="enlace" href="estrella-fugaz.html">
+                            Ver proyecto →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- DIBUJOS ANTERIORES -->
+            <div class="encabezado secundarios">
+                <span class="mini">Más creaciones</span>
+                <h2>Otros dibujos</h2>
+                <p>
+                    También puedes consultar los dibujos anteriores
+                    de mi colección.
+                </p>
+            </div>
+
+            <div class="rejilla">
+
+                <article class="tarjeta">
+                    <div class="ilustracion" aria-hidden="true">🐸</div>
+                    <div class="tarjeta-contenido">
+                        <h3>Rana</h3>
+                        <p>
+                            Ilustración de una rana elaborada
+                            mediante programación.
+                        </p>
+                        <a class="enlace" href="rana.html">
+                            Ver dibujo →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="ilustracion" aria-hidden="true">🐰</div>
+                    <div class="tarjeta-contenido">
+                        <h3>Dientes de conejo</h3>
+                        <p>
+                            Un dibujo divertido creado con
+                            figuras y formas digitales.
+                        </p>
+                        <a class="enlace" href="dientes-conejo.html">
+                            Ver dibujo →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta">
+                    <div class="ilustracion" aria-hidden="true">⛄</div>
+                    <div class="tarjeta-contenido">
+                        <h3>Muñeco de nieve</h3>
+                        <p>
+                            Una ilustración invernal realizada
+                            con herramientas gráficas.
+                        </p>
+                        <a class="enlace" href="muneco-nieve.html">
+                            Ver dibujo →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
         </section>
+
+        <!-- INFORMACIÓN SOBRE CANVAS -->
+        <section id="canvas">
+
+            <div class="encabezado">
+                <span class="mini">Aprende y descubre</span>
+                <h2>HTML Canvas y contexto 2D</h2>
+                <p>
+                    La tecnología que permite transformar instrucciones
+                    de código en dibujos digitales.
+                </p>
+            </div>
+
+            <article class="info">
+                <div class="info-icono" aria-hidden="true">🎨</div>
+
+                <div>
+                    <h3>¿Qué es la etiqueta canvas?</h3>
+                    <p>
+                        La etiqueta <code>&lt;canvas&gt;</code> de HTML
+                        proporciona una superficie rectangular en la que
+                        JavaScript puede dibujar gráficos, figuras,
+                        imágenes, texto y animaciones. Por sí sola,
+                        la etiqueta crea el área de dibujo; el código
+                        JavaScript permite representar los elementos.
+                    </p>
+
+                    <h3>¿Cómo funciona el contexto 2D?</h3>
+                    <p>
+                        El contexto bidimensional se obtiene mediante
+                        <code>canvas.getContext("2d")</code>. Este objeto
+                        proporciona métodos para dibujar y modificar
+                        elementos en dos dimensiones.
+                    </p>
+
+                    <ul>
+                        <li><code>fillRect()</code>: dibuja rectángulos rellenos.</li>
+                        <li><code>arc()</code>: dibuja arcos y círculos.</li>
+                        <li><code>moveTo()</code> y <code>lineTo()</code>: construyen líneas.</li>
+                        <li><code>fillStyle</code>: define el color de relleno.</li>
+                        <li><code>clearRect()</code>: limpia una zona del lienzo.</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <!-- INFORMACIÓN SOBRE P5.JS -->
+        <section id="p5js">
+
+            <div class="encabezado">
+                <span class="mini">Creatividad con código</span>
+                <h2>Fundamentos de p5.js ✨</h2>
+                <p>
+                    Una biblioteca de JavaScript que facilita la creación
+                    de arte digital, animaciones e interacciones.
+                </p>
+            </div>
+
+            <article class="info">
+                <div class="info-icono" aria-hidden="true">💜</div>
+
+                <div>
+                    <h3>¿Qué es p5.js?</h3>
+                    <p>
+                        p5.js es una biblioteca gratuita de JavaScript
+                        orientada a la programación creativa. Simplifica
+                        la creación de gráficos mediante funciones para
+                        dibujar formas, aplicar colores, detectar acciones
+                        del usuario y producir animaciones.
+                    </p>
+
+                    <h3>Funciones principales</h3>
+                    <ul>
+                        <li><code>setup()</code>: inicializa el programa.</li>
+                        <li><code>draw()</code>: actualiza continuamente la escena.</li>
+                        <li><code>createCanvas()</code>: crea el lienzo de dibujo.</li>
+                        <li><code>background()</code>: establece el fondo.</li>
+                        <li><code>ellipse()</code>: dibuja círculos y elipses.</li>
+                        <li><code>rect()</code>: dibuja rectángulos.</li>
+                        <li><code>fill()</code> y <code>stroke()</code>: configuran rellenos y contornos.</li>
+                    </ul>
+
+                    <h3>Aplicación en los gráficos</h3>
+                    <p>
+                        Estas funciones permiten controlar el movimiento
+                        de objetos, cambiar colores y crear efectos
+                        visuales. La función <code>draw()</code> se
+                        ejecuta repetidamente, lo que facilita generar
+                        animaciones.
+                    </p>
+                </div>
+            </article>
+        </section>
+
+        <!-- INSPECTOR DEL DOM -->
+        <section id="dom">
+
+            <div class="dom-card">
+                <div class="dom-emoji" aria-hidden="true">🌷</div>
+
+                <h2>Árbol del DOM</h2>
+
+                <p>
+                    Explora la estructura jerárquica de los documentos
+                    HTML de este sitio. Observa cómo se organizan las
+                    etiquetas desde <code>&lt;html&gt;</code>,
+                    <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code>
+                    hasta sus elementos hijos.
+                </p>
+
+                <a class="boton" href="dom-inspector.html">
+                    Explorar el árbol DOM →
+                </a>
+            </div>
+
+        </section>
+
     </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="footer-logo">✿ Mundo Creativo</div>
+        <p>Proyecto académico de Despliegue de Gráficos</p>
+        <p>Creado con HTML, CSS y JavaScript <span class="corazon">♥</span></p>
+    </footer>
+
 </body>
 </html>

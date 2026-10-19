@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Nubes Animadas</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #222;
+        }
+        canvas {
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Variables de posición de las nubes
+        let leftX = 150;
+        let rightX = 250;
+
+        function draw() {
+            // Desactivar bordes
+            ctx.strokeStyle = "transparent";
+
+            // Fondo de cielo azul
+            ctx.fillStyle = "rgb(184, 236, 255)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Dibujar nubes en blanco
+            ctx.fillStyle = "rgb(255, 255, 255)";
+
+            // Nube izquierda (left cloud)
+            drawEllipse(leftX, 150, 126, 97);
+            drawEllipse(leftX + 62, 150, 70, 60);
+            drawEllipse(leftX - 62, 150, 70, 60);
+
+            // Nube derecha (right cloud)
+            drawEllipse(rightX, 100, 126, 97);
+            drawEllipse(rightX + 62, 100, 70, 60);
+            drawEllipse(rightX - 62, 100, 70, 60);
+
+            // Movimiento de las nubes
+            leftX--;
+            rightX++;
+        }
+
+        // Función auxiliar para dibujar elipses con ancho y alto
+        function drawEllipse(x, y, w, h) {
+            ctx.beginPath();
+            ctx.ellipse(x, y, w / 2, h / 2, 0, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Bucle de animación (~60 FPS)
+        setInterval(draw, 1000 / 60);
+    </script>
+
+</body>
+</html>

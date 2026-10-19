@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación del Sol</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #222;
+        }
+        canvas {
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let sunSize = 30;
+
+        function draw() {
+            // noStroke() equivalente: desactivar los bordes (o establecerlos iguales al relleno)
+            ctx.strokeStyle = "transparent";
+
+            // El hermoso cielo azul (background)
+            ctx.fillStyle = "rgb(82, 222, 240)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // El tamaño inicial del sol va creciendo
+            sunSize = sunSize + 1;
+
+            // El sol, un pequeño círculo en el horizonte
+            ctx.fillStyle = "rgb(255, 204, 0)";
+            ctx.beginPath();
+            // ellipse(x, y, radiusX, radiusY, rotation, startAngle, endAngle)
+            ctx.ellipse(200, 298, sunSize / 2, sunSize / 2, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // La tierra, bloqueando la mitad del sol
+            ctx.fillStyle = "rgb(76, 168, 67)";
+            ctx.fillRect(0, 300, 400, 100);
+        }
+
+        // Bucle de animación (aproximadamente 60 cuadros por segundo)
+        setInterval(draw, 1000 / 60);
+    </script>
+
+</body>
+</html>
